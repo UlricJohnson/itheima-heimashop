@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>heimashop</display-name>
+  
+  <!-- 编码过滤器 -->
+  <filter>
+  	<filter-name>EncodingFilter</filter-name>
+  	<filter-class>com.itheima.shop.web.filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>EncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  <servlet><!-- 用户操作 -->
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.itheima.shop.web.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet><!-- 商品操作 -->
+    <servlet-name>ProductServlet</servlet-name>
+    <servlet-class>com.itheima.shop.web.servlet.ProductServlet</servlet-class>
+  </servlet>
+  <servlet><!-- 购物车 -->
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>com.itheima.shop.web.servlet.CartServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OrderServlet</servlet-name>
+    <servlet-class>com.itheima.shop.web.servlet.OrderServlet</servlet-class>
+  </servlet>
+
+
+
+
+  <servlet-mapping><!-- 用户操作 -->
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping><!-- 商品操作 -->
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>/ProductServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping><!-- 购物车 -->
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/CartServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrderServlet</servlet-name>
+    <url-pattern>/OrderServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 欢迎文件 -->
+  <welcome-file-list>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
