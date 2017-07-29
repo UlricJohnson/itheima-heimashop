@@ -1,6 +1,7 @@
 package com.itheima.shop.web.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -35,11 +36,41 @@ public class UserServlet extends HttpServlet {
 
 		if (action.equalsIgnoreCase("register")) {
 			this.register(req, resp);
+		} else if (action.equalsIgnoreCase("active")) {
+			this.active(req, resp);
 		} else if (action.equalsIgnoreCase("login")) {
 			this.login(req, resp);
 		} else if (action.equalsIgnoreCase("logout")) {
 			this.logout(req, resp);
 		}
+	}
+
+	/**
+	 * 激活账号
+	 * 
+	 * @param req
+	 * @param resp
+	 */
+	private void active(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		System.out.println("======UserServlet--active()");
+
+		// 获取激活码
+		String code = req.getParameter("code");
+
+		try {
+			// 根据激活码对用户的激活状态进行修改
+			UserService service = new UserService();
+			service.active(code);
+
+			// 重定向到首页
+			resp.sendRedirect(req.getContextPath() + "default.jsp");
+		} catch (SQLException e) {
+			req.setAttribute("ERRORMSG", "激活失败");
+			req.getRequestDispatcher("/WEB-INF/error.jsp").forward(req, resp);
+			e.printStackTrace();
+		}
+
 	}
 
 	/**

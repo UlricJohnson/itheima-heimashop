@@ -92,8 +92,8 @@
 						</div>
 						<div style="text-align:right;margin-top:10px;margin-bottom:10px;">
 							<a href="${pageContext.request.contextPath}/CartServlet?action=clearCart&cart=${CART}" id="clear" class="clear">清空购物车</a>
-							<a href="order_info.jsp">
-								<input type="submit" width="100" value="提交订单" name="submit" border="0" onclick="submitOrder()"
+							<a href="${pageContext.request.contextPath}/OrderServlet?action=submitOrder">
+								<input type="submit" width="100" value="提交订单" name="submit" border="0"
 									style="background: url('./images/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 									height:35px;width:100px;color:white;">
 							</a>
@@ -108,10 +108,6 @@
 		</div>
 		
 		<script>
-			//提交订单
-			function submitOrder(){
-				
-			}
 		
 			//删除购物项
 			/*function deleteItem(){

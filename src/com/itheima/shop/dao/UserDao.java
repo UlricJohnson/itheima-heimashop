@@ -32,11 +32,26 @@ public class UserDao {
 		System.out.println("======UserDao--login()");
 
 		String sql = "select * from user " + "where username = '" + username
-				+ "' and password = '" + password+"';";
+				+ "' and password = '" + password + "';";
 
 		Object[] params = null;
 
 		return runner.query(sql, new BeanHandler<User>(User.class), params);
+
+	}
+
+	/**
+	 * 激活账号
+	 * @throws SQLException 
+	 */
+	public void active(String code) throws SQLException {
+		System.out.println("======UserDao--active()");
+
+		String sql = "update `user` set state='Y' where `code`=?";
+
+		Object[] params = { code };
+
+		runner.update(sql, params);
 
 	}
 
